@@ -189,77 +189,74 @@ class HomePage extends StatelessWidget {
   }
 
   Widget layoutItem(CoinModel dataitem) {
-    return (controller.dataselect.key == dataitem.key)
-        ? Container()
-        : InkWell(
-            onTap: () {
-              controller.selectCoin(dataitem);
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 15),
-              decoration: BoxDecoration(
-                  border: Border(
-                      bottom: BorderSide(
-                          color: AppColor.colorgrayv3.withOpacity(0.4)))),
-              child: Row(
+    return InkWell(
+        onTap: () {
+          controller.selectCoin(dataitem);
+        },
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 15),
+          decoration: BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(
+                      color: AppColor.colorgrayv3.withOpacity(0.4)))),
+          child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                    width: 40,
+                    height: 40,
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: AppColor.colorgrayv5.withOpacity(0.6)),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Image.asset(AppImage.logo)),
+                Padding(padding: EdgeInsets.only(left: 10)),
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
-                        width: 40,
-                        height: 40,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: AppColor.colorgrayv5.withOpacity(0.6)),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset(AppImage.logo)),
-                    Padding(padding: EdgeInsets.only(left: 10)),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(dataitem.name,
-                            style: TextStyle(
-                              color: AppColor.colorwhite,
-                              fontSize: AppSetting.sizetextnormal + 2,
-                              letterSpacing: AppSetting.sizeletterspacing,
-                              fontWeight: FontWeight.w600,
-                            )),
-                        Text("Vol : " + dataitem.volidr,
-                            style: TextStyle(
-                              color: AppColor.colorwhite.withOpacity(0.6),
-                              fontSize: AppSetting.sizetextnormal - 4,
-                              letterSpacing: AppSetting.sizeletterspacing,
-                              fontWeight: FontWeight.w500,
-                            )),
-                      ],
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          Text(NumberFormat("#,###").format(dataitem.hargaNum),
-                              style: TextStyle(
-                                color: AppColor.colorwhite,
-                                fontSize: AppSetting.sizetextnormal + 1,
-                                letterSpacing: AppSetting.sizeletterspacing,
-                                fontWeight: FontWeight.w600,
-                              )),
-                          Text(
-                              (dataitem.selisih >= 0 ? "+" : "") +
-                                  NumberFormat("#,###")
-                                      .format(dataitem.selisih),
-                              style: TextStyle(
-                                color: (dataitem.selisih >= 0)
-                                    ? AppColor.colorgreen
-                                    : AppColor.colorred,
-                                fontSize: AppSetting.sizetextnormal - 4,
-                                letterSpacing: AppSetting.sizeletterspacing,
-                                fontWeight: FontWeight.w500,
-                              )),
-                        ],
-                      ),
-                    )
-                  ]),
-            ));
+                    Text(dataitem.name,
+                        style: TextStyle(
+                          color: AppColor.colorwhite,
+                          fontSize: AppSetting.sizetextnormal + 2,
+                          letterSpacing: AppSetting.sizeletterspacing,
+                          fontWeight: FontWeight.w600,
+                        )),
+                    Text("Vol : " + dataitem.volidr,
+                        style: TextStyle(
+                          color: AppColor.colorwhite.withOpacity(0.6),
+                          fontSize: AppSetting.sizetextnormal - 4,
+                          letterSpacing: AppSetting.sizeletterspacing,
+                          fontWeight: FontWeight.w500,
+                        )),
+                  ],
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Text(NumberFormat("#,###").format(dataitem.hargaNum),
+                          style: TextStyle(
+                            color: AppColor.colorwhite,
+                            fontSize: AppSetting.sizetextnormal + 1,
+                            letterSpacing: AppSetting.sizeletterspacing,
+                            fontWeight: FontWeight.w600,
+                          )),
+                      Text(
+                          (dataitem.selisih >= 0 ? "+" : "") +
+                              NumberFormat("#,###").format(dataitem.selisih),
+                          style: TextStyle(
+                            color: (dataitem.selisih >= 0)
+                                ? AppColor.colorgreen
+                                : AppColor.colorred,
+                            fontSize: AppSetting.sizetextnormal - 4,
+                            letterSpacing: AppSetting.sizeletterspacing,
+                            fontWeight: FontWeight.w500,
+                          )),
+                    ],
+                  ),
+                )
+              ]),
+        ));
   }
 }

@@ -61,7 +61,9 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   }
 
   void selectCoin(dataitem) {
-    dataselect = dataitem;
-    refresh();
+    if (dataselect.key != dataitem.key) {
+      dataselect = dataitem;
+      refresh();
+    }
   }
 }
